@@ -3,7 +3,7 @@ const express=require('express');
 const cors=require('cors');
 
 
-const port = 3000;
+const port = 5000;
 
 const app=express();
 
@@ -72,11 +72,11 @@ app.get('/read/:collection_name',(req,res)=>{
             
                 // Use 'once' instead of 'on' to fetch data once and avoid persistent listening
                 ref.once('value', (snapshot) => {
-            
+
                   let data = Object.values(snapshot.val());
-            
+                                                      
                   for (let obj of data) {
-                    response.push(obj.role);
+                    response.push(obj);
                   }
             
                   return res.status(200).send(response);
